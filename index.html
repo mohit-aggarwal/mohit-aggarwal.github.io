@@ -27,14 +27,12 @@
                     </thead>
                     <tbody>
                         <tr ng-repeat="tweet in tweets">
-                            {% raw %}
                             <td>{{tweet.text}}</td>
 
                             <td>{{tweet.retweet_count}}</td>
 
                             <td><div><img src="{{tweet.user.profile_image_url}}" class="img-responsive"></div>
                                 @{{tweet.user.name}}</td>
-                            {% endraw %}
                         </tr>
                     </tbody>
                 </table>
@@ -53,7 +51,7 @@
         $scope.tweets = [];
         $scope.hashtag = 'custserv';
         $scope.search = function () {
-            $http.get('/search?hashtag='+$scope.hashtag).then(function(response) {
+            $http.get('http://192.99.35.129:5000/search?hashtag='+$scope.hashtag).then(function(response) {
                 $scope.tweets = response.data;
             });
         }
